@@ -14,5 +14,6 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("*****I'm a console app!*******");
+		System.out.println("adding a 2nd line just to make a commit");
 	}
 }
