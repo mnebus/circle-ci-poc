@@ -68,8 +68,8 @@ workflows:
       - build
   release:
     jobs:
-      - publish
-      #only execute on a release/tag with a name that starts with v (eg. v0.1-alpha)
-      filters:
-        tags:
-          only: /^v.*/
+      - publish:
+        #only execute on a release/tag with a name that starts with v (eg. v0.1-alpha)
+        filters:
+          tags:
+            only: /^v.*/
