@@ -39,8 +39,37 @@ jobs:
         
       # run tests!
       - run: mvn clean package
+
+  # eventually this will publish to artifactory
+  publish:
+    docker:
+      - image: maven:3.6.0-jdk-8-alpine
+    working_directory: ~/repo
+
+    environment:
+      MAVEN_OPTS: -Xmx4096m
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "pom.xml" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run: mvn clean install
+      - run: echo "I am the release!"
+
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
+  release:
+    jobs:
+      - publish
+    #only execute on a release/tag with a name that starts with v (eg. v0.1-alpha)
+    filters:
+      tags:
+        only: /^v.*/
