@@ -32,15 +32,15 @@ jobs:
 
       - run: mvn dependency:go-offline
 
+      - run: mvn clean package
+
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
-      # run tests!
-      - run: mvn clean package
 
-  # eventually this will publish to artifactory
+  #publish artifact to artifactory repo
   publish:
     docker:
       - image: maven:3.6.0-jdk-8-alpine
@@ -58,7 +58,6 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
       - run: mvn versions:set -DnewVersion=${CIRCLE_TAG}
-      - run: echo "I am the release!"
 
 
 workflows:
