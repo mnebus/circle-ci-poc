@@ -58,6 +58,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v2-publish-dependencies-
       - run: mvn versions:set -DnewVersion=${CIRCLE_TAG}
+      - run: mvn deploy
 
 
 workflows:
