@@ -53,7 +53,7 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "pom.xml" }}
-          
+
       - run: mvn versions:set -DnewVersion=${CIRCLE_TAG}
       - run: echo "I am the release!"
 
