@@ -7,7 +7,8 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: maven:3.6.0-jdk-8-alpine
+      #- image: maven:3.6.0-jdk-8-alpine
+      - image: circleci/openjdk:8-jdk-browsers
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -18,7 +19,8 @@ jobs:
 
     environment:
       # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx4096m
+      MAVEN_OPTS: -Xmx3072m
+      JAVA_TOOL_OPTIONS: -Xmx3072m
     
     steps:
       - checkout
