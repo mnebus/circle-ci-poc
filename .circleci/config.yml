@@ -18,7 +18,7 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      JAVA_TOOL_OPTIONS: -Xmx3072m
+      JAVA_TOOL_OPTIONS: -Xmx1024m
     
     steps:
       - checkout
@@ -47,7 +47,7 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      JAVA_TOOL_OPTIONS: -Xmx3072m
+      JAVA_TOOL_OPTIONS: -Xmx1024m
 
     steps:
       - checkout
