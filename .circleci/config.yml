@@ -7,7 +7,8 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: maven:3.6.0-jdk-8-alpine
+      #- image: maven:3.6.0-jdk-8-alpine
+      - image: circleci/openjdk:8-jdk-browsers
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -17,8 +18,7 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx4096m
+      JAVA_TOOL_OPTIONS: -Xmx1024m
     
     steps:
       - checkout
@@ -26,9 +26,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "pom.xml" }}
+          - v3-dependencies-{{ checksum "pom.xml" }}
           # fallback to using the latest cache if no exact match is found
-          - v2-dependencies-
+          - v3-dependencies-
 
       - run: mvn dependency:go-offline
 
@@ -37,7 +37,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.m2
-          key: v2-dependencies-{{ checksum "pom.xml" }}
+          key: v3-dependencies-{{ checksum "pom.xml" }}
         
 
   #publish artifact to artifactory repo
@@ -47,16 +47,16 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      MAVEN_OPTS: -Xmx4096m
+      JAVA_TOOL_OPTIONS: -Xmx1024m
 
     steps:
       - checkout
 
       - restore_cache:
           keys:
-          - v2-publish-dependencies-{{ checksum "pom.xml" }}
+          - v3-publish-dependencies-{{ checksum "pom.xml" }}
           # fallback to using the latest cache if no exact match is found
-          - v2-publish-dependencies-
+          - v3-publish-dependencies-
       - run: mvn versions:set -DnewVersion=${CIRCLE_TAG}
       - run: mvn deploy
 
