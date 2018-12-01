@@ -1,5 +1,8 @@
 # circle-ci-poc
 
+## Build Status
+[![CircleCI](https://circleci.com/gh/mnebus/circle-ci-poc.svg?style=svg)](https://circleci.com/gh/mnebus/circle-ci-poc)
+
 ## Purpose
 This project is an example of a project with a CI and release process managed by [circleci](https://circleci.com/pricing/#build-linux)
 
