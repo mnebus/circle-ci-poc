@@ -2,7 +2,7 @@
 
 ## Build Status
 [![CircleCI](https://circleci.com/gh/mnebus/circle-ci-poc.svg?style=svg)](https://circleci.com/gh/mnebus/circle-ci-poc)
-[![DepShield Badge](https://depshield.sonatype.org/badges/owner/repository/depshield.svg)](https://depshield.github.io)
+[![DepShield Badge](https://depshield.sonatype.org/badges/mnebus/circle-ci-poc/depshield.svg)](https://depshield.github.io)
 
 ## Purpose
 This project is an example of a project with a CI and release process managed by [circleci](https://circleci.com/pricing/#build-linux)
